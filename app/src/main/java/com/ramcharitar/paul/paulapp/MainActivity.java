@@ -22,9 +22,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Button b1;
-    EditText ed1;
 
-    private WebView wv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,21 +48,13 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        b1=(Button)findViewById(R.id.button);
-        ed1=(EditText)findViewById(R.id.editText);
-
-        wv1=(WebView)findViewById(R.id.webView);
-        wv1.setWebViewClient(new MyBrowser());
+        b1=(Button)findViewById(R.id.button1);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = ed1.getText().toString();
-
-                wv1.getSettings().setLoadsImagesAutomatically(true);
-                wv1.getSettings().setJavaScriptEnabled(true);
-                wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                wv1.loadUrl(url);
+                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
     }
@@ -124,13 +114,5 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private class MyBrowser extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
     }
 }
